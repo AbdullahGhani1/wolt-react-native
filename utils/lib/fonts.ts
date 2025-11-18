@@ -50,3 +50,5 @@ export const getFontFamily = (weight: string) => {
       return FONTS.REGULAR;
   }
 };
+
+export default { scaleFontSize, getFontFamily };

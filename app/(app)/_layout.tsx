@@ -1,4 +1,4 @@
-import { fontConfig } from "@/configs";
+import { fontConfig } from "@configs";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import React from "react";

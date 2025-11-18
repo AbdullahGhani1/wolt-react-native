@@ -1,6 +1,6 @@
-import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { useTheme } from '@/hooks';
+import { useTheme } from "@hooks";
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 export default function ThemeToggle() {
   const { isDarkMode, toggleTheme, colors } = useTheme();
@@ -11,7 +11,7 @@ export default function ThemeToggle() {
       onPress={toggleTheme}
     >
       <Text style={[styles.text, { color: colors.BACKGROUND }]}>
-        {isDarkMode ? '🌙 Dark Mode' : '☀️ Light Mode'}
+        {isDarkMode ? "🌙 Dark Mode" : "☀️ Light Mode"}
       </Text>
     </TouchableOpacity>
   );
@@ -21,11 +21,11 @@ const styles = StyleSheet.create({
   button: {
     padding: 12,
     borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   text: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
   },
 });

@@ -1,16 +1,16 @@
-// import type { CartItem } from '@/hooks/use-cartstore';
+// import type { CartItem } from '@hooks/use-cartstore';
 
 export interface OrderData {
   // items: CartItem[];
   restaurantId: string;
-  deliveryMode: 'delivery' | 'pickup';
+  deliveryMode: "delivery" | "pickup";
   deliveryAddress?: string;
   leaveAtDoor: boolean;
   sendAsGift: boolean;
-  deliveryTime: 'standard' | 'schedule';
+  deliveryTime: "standard" | "schedule";
   selectedTimeSlot?: string;
   tipAmount: number;
-  paymentMethod: 'applepay' | 'card';
+  paymentMethod: "applepay" | "card";
   subtotal: number;
   serviceFee: number;
   deliveryFee: number;
@@ -21,7 +21,9 @@ export const orderService = {
   /**
    * Create a new order
    */
-  createOrder: async (orderData: OrderData): Promise<{ orderId: string; success: boolean }> => {
+  createOrder: async (
+    orderData: OrderData
+  ): Promise<{ orderId: string; success: boolean }> => {
     // TODO: Replace with actual API call when backend is ready
     // return fetch('/api/orders', {
     //   method: 'POST',
@@ -29,7 +31,7 @@ export const orderService = {
     //   body: JSON.stringify(orderData)
     // }).then(res => res.json());
 
-    console.log('Creating order:', orderData);
+    console.log("Creating order:", orderData);
 
     // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 1000));

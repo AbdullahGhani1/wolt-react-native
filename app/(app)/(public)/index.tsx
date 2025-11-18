@@ -1,6 +1,7 @@
 import AppleAuthButton from "@components/auth/AppleAuthButton";
 import GoogleAuthButton from "@components/auth/GoogleAuthButton";
-import { Fonts } from "@constants/theme";
+import ThemeToggle from "@components/ThemeToggle";
+import { Fonts } from "@utils";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
@@ -31,7 +32,7 @@ export default function Index() {
             <TouchableOpacity style={styles.otherButton}>
               <Text style={styles.OtherButtonText}>Others</Text>
             </TouchableOpacity>
-            Others
+            <ThemeToggle />
           </Animated.View>
         </View>
       </View>
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
   },
   tagline: {
     fontSize: 32,
-    fontFamily: Fonts.brandBlack,
+    fontFamily: Fonts.getFontFamily("600"),
     textAlign: "center",
     marginBottom: 50,
     lineHeight: 36,
@@ -70,6 +71,6 @@ const styles = StyleSheet.create({
   OtherButtonText: {
     color: "white",
     fontSize: 16,
-    fontFamily: Fonts.brand,
+    fontFamily: Fonts.getFontFamily("400"),
   },
 });

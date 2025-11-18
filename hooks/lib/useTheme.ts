@@ -1,11 +1,18 @@
-import { useTheme as useThemeContext } from '@/contexts/ThemeContext';
-import { COLORS } from '@/constants';
+import { COLORS } from "@constants";
+import { useThemeStore } from "@store/themeStore";
+import { useMemo } from "react";
 
-const useTheme = () => {
-  const { theme, isDarkMode, toggleTheme, setTheme } = useThemeContext();
-  const colors = COLORS.getColors(isDarkMode);
+export const useTheme = () => {
+  const theme = useThemeStore((state) => state.theme);
+  const toggleTheme = useThemeStore((state) => state.toggleTheme);
+  const isDarkMode = theme === "dark";
 
-  return { theme, colors, toggleTheme, setTheme, isDarkMode };
+  const colors = useMemo(() => COLORS.getColors(isDarkMode), [isDarkMode]);
+
+  return {
+    theme,
+    colors,
+    isDarkMode,
+    toggleTheme,
+  };
 };
-
-export default useTheme;
