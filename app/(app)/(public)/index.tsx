@@ -1,6 +1,8 @@
+import AppleAuthButton from "@/components/auth/AppleAuthButton";
+import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 import { Fonts } from "@/constants/theme";
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
 export default function Index() {
@@ -19,8 +21,17 @@ export default function Index() {
         {/* Login Buttons */}
 
         <View style={styles.buttonContainer}>
+          <Animated.View entering={FadeInDown.delay(100)}>
+            <GoogleAuthButton />
+          </Animated.View>
           <Animated.View entering={FadeInDown.delay(200)}>
-            {/* Apple Auth */}
+            <AppleAuthButton />
+          </Animated.View>
+          <Animated.View entering={FadeInDown.delay(300)}>
+            <TouchableOpacity style={styles.otherButton}>
+              <Text style={styles.OtherButtonText}>Others</Text>
+            </TouchableOpacity>
+            Others
           </Animated.View>
         </View>
       </View>
@@ -48,5 +59,17 @@ const styles = StyleSheet.create({
   buttonContainer: {
     gap: 12,
     width: "100%",
+  },
+  otherButton: {
+    backgroundColor: "black",
+    paddingVertical: 14,
+    borderRadius: 8,
+    alignItems: "center",
+    marginHorizontal: 12,
+  },
+  OtherButtonText: {
+    color: "white",
+    fontSize: 16,
+    fontFamily: Fonts.brand,
   },
 });

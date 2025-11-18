@@ -1,17 +1,9 @@
-import {
-  Nunito_400Regular,
-  Nunito_700Bold,
-  Nunito_900Black,
-} from "@expo-google-fonts/nunito";
+import { fontConfig } from "@/configs";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import React from "react";
 const RootNav = () => {
-  let [fontsLoaded] = useFonts({
-    Nunito_400Regular,
-    Nunito_700Bold,
-    Nunito_900Black,
-  });
+  let [fontsLoaded] = useFonts(fontConfig);
   if (!fontsLoaded) return null;
   return (
     <Stack>

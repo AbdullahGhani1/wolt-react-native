@@ -5,7 +5,15 @@
     "strict": true,
     "paths": {
       "@/*": ["./*"],
-      "@assets/*": ["./assets/*"]
+      "@assets/*": ["./assets/*"],
+      "@configs/*": ["./configs/*"],
+      "@contexts/*": ["./contexts/*"],
+      "@constants/*": ["./constants/*"],
+      "@components/*": ["./components/*"],
+      "@data/*": ["./data/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@utils/*": ["./utils/*"],
+      "@services/*": ["./services/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
