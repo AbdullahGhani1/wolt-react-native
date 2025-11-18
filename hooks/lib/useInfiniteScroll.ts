@@ -23,7 +23,7 @@ export const useInfiniteScroll = ({
   const scrollY = useSharedValue(0);
 
   const { SCROLL_SPEED, FRAME_RATE } = SMOOTH_SCROLL_CONFIG;
-
+  const isDown = scrollDirection === "down";
   useEffect(() => {
     // Initialize scroll position
     if (scrollDirection === "up") {
@@ -46,21 +46,14 @@ export const useInfiniteScroll = ({
   useAnimatedReaction(
     () => scrollY.value,
     (y) => {
-      if (scrollDirection === "down") {
-        if (y >= totalContentHeight) {
-          scrollY.value = 0;
-          scrollTo(scrollRef, 0, 0, false);
-        } else {
-          scrollTo(scrollRef, 0, y, false);
-        }
-      } else {
-        if (y <= 0) {
-          scrollY.value = totalContentHeight;
-          scrollTo(scrollRef, 0, totalContentHeight, false);
-        } else {
-          scrollTo(scrollRef, 0, y, false);
-        }
-      }
+      "worklet";
+
+      const shouldReset = isDown ? y >= totalContentHeight : y <= 0;
+      const resetValue = isDown ? 0 : totalContentHeight;
+
+      const newY = shouldReset ? resetValue : y;
+      shouldReset && (scrollY.value = resetValue);
+      scrollTo(scrollRef, 0, newY, false);
     }
   );
 

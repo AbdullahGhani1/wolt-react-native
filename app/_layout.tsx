@@ -4,7 +4,14 @@ import { Slot } from "expo-router";
 import { useEffect } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      retry: 1,
+    },
+  },
+});
 export default function RootLayout() {
   const initThemeListener = useThemeStore((state) => state.initThemeListener);
   useEffect(() => {
