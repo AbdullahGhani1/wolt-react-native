@@ -16,3 +16,5 @@ export const useTheme = () => {
     toggleTheme,
   };
 };
+
+export default useTheme;

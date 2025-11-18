@@ -1,14 +1,18 @@
+import Button from "@components/atoms/Button";
 import AppleAuthButton from "@components/auth/AppleAuthButton";
 import GoogleAuthButton from "@components/auth/GoogleAuthButton";
 import ThemeToggle from "@components/ThemeToggle";
-import { Fonts } from "@utils";
+import { TEXT } from "@constants";
+import { useTheme } from "@hooks";
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
+import styles from "./style";
 
 export default function Index() {
+  const { colors } = useTheme();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.BACKGROUND }]}>
       <View style={styles.infiniteScrollContainer}></View>
       <View style={styles.contentContainer}>
         <Image
@@ -32,45 +36,17 @@ export default function Index() {
             <TouchableOpacity style={styles.otherButton}>
               <Text style={styles.OtherButtonText}>Others</Text>
             </TouchableOpacity>
-            <ThemeToggle />
           </Animated.View>
+          <Button
+            mode="outlined"
+            style={styles.signInButton}
+            onPress={() => {}}
+            btnText={TEXT.BTN_SIGNIN_SIMPLE}
+            buttonColor={colors.BUTTON_COLOR}
+          />
+          <ThemeToggle />
         </View>
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-  infiniteScrollContainer: { flex: 0.8 },
-  contentContainer: { flex: 1, alignItems: "center" },
-  brandLong: {
-    width: "100%",
-    height: 48,
-    resizeMode: "contain",
-    marginBottom: 20,
-  },
-  tagline: {
-    fontSize: 32,
-    fontFamily: Fonts.getFontFamily("600"),
-    textAlign: "center",
-    marginBottom: 50,
-    lineHeight: 36,
-  },
-  buttonContainer: {
-    gap: 12,
-    width: "100%",
-  },
-  otherButton: {
-    backgroundColor: "black",
-    paddingVertical: 14,
-    borderRadius: 8,
-    alignItems: "center",
-    marginHorizontal: 12,
-  },
-  OtherButtonText: {
-    color: "white",
-    fontSize: 16,
-    fontFamily: Fonts.getFontFamily("400"),
-  },
-});

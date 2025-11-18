@@ -1,12 +1,12 @@
-import { StyleSheet } from 'react-native';
-import { Fonts, Scale } from '@utils';
+import { Fonts, Scale } from "@utils";
+import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   button: {
-    alignItems: 'center',
+    alignItems: "center",
     borderRadius: 8,
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
     gap: Scale.getHorizontalScale(8),
     paddingVertical: Scale.getVerticalScale(14),
     paddingHorizontal: Scale.getHorizontalScale(12),
@@ -14,7 +14,7 @@ export default StyleSheet.create({
   text: {
     fontSize: Fonts.scaleFontSize(16),
     marginTop: Scale.getVerticalScale(3),
-    fontFamily: Fonts.getFontFamily('600'),
+    fontFamily: Fonts.getFontFamily("600"),
   },
 });
 
