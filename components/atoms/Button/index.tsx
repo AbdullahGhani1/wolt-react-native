@@ -7,8 +7,7 @@ import {
   ViewStyle,
 } from "react-native";
 
-import { useTheme } from "@hooks";
-
+import { useTheme } from "@/hooks";
 import styles from "./style";
 
 interface Props {

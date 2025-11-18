@@ -19,6 +19,8 @@ export const getColors = (isDarkMode: boolean) => ({
   DARK: Colors.dark,
   LIGHT: Colors.light,
   PRIMARY_LIGHT: Colors.primaryLight,
+  BUTTON_COLOR: isDarkMode ? BLACK : WHITE,
+  BUTTON_OUTLINE: isDarkMode ? "#D1D5DB" : "#25282D",
 });
 
 export default { WHITE, BLACK, getColors };

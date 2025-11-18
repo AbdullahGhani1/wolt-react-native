@@ -1,6 +1,6 @@
-import AppleAuthButton from "@/components/auth/AppleAuthButton";
-import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
-import { Fonts } from "@/constants/theme";
+import AppleAuthButton from "@components/auth/AppleAuthButton";
+import GoogleAuthButton from "@components/auth/GoogleAuthButton";
+import { Fonts } from "@constants/theme";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
