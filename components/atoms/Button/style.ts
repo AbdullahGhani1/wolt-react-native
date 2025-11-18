@@ -1,15 +1,23 @@
+import { DESIGN_SYSTEM } from "@constants";
 import { Fonts, Scale } from "@utils";
-import { StyleSheet } from "react-native";
+import { StyleSheet, TextStyle, ViewStyle } from "react-native";
 
-export default StyleSheet.create({
+const { SPACING, BORDER_RADIUS } = DESIGN_SYSTEM;
+
+interface ButtonStyles {
+  button: ViewStyle;
+  text: TextStyle;
+}
+
+export default StyleSheet.create<ButtonStyles>({
   button: {
     alignItems: "center",
-    borderRadius: 8,
+    borderRadius: BORDER_RADIUS.MD,
     flexDirection: "row",
     justifyContent: "center",
-    gap: Scale.getHorizontalScale(8),
-    paddingVertical: Scale.getVerticalScale(14),
-    paddingHorizontal: Scale.getHorizontalScale(12),
+    gap: Scale.getHorizontalScale(SPACING.SM),
+    paddingVertical: Scale.getVerticalScale(SPACING.MD),
+    paddingHorizontal: Scale.getHorizontalScale(SPACING.MD),
     minHeight: Scale.getVerticalScale(48),
   },
   text: {

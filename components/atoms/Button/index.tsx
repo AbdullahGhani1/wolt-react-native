@@ -14,7 +14,7 @@ type ButtonMode = "primary" | "secondary" | "tertiary" | "text";
 interface ButtonProps {
   btnText?: string;
   loading?: boolean;
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
   textColor?: string;
   disabled?: boolean;
   buttonColor?: string;
