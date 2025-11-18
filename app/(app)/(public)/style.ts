@@ -7,7 +7,8 @@ const { SPACING, LINE_HEIGHT, FONT_SIZE } = DESIGN_SYSTEM;
 
 interface LandingStyles {
   container: ViewStyle;
-  scrollContainer: ViewStyle;
+  infiniteScrollContainer: ViewStyle;
+  gradientOverlay: ViewStyle;
   contentContainer: ViewStyle;
   brandLogo: ImageStyle;
   tagline: TextStyle;
@@ -28,16 +29,28 @@ export const createStyles = (colors: ColorPalette): LandingStyles => {
       flex: 1,
       backgroundColor: colors.background,
     },
-    scrollContainer: {
+    infiniteScrollContainer: {
       flex: 0.8,
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: SPACING.XS,
+      position: "relative",
+      overflow: "hidden",
+    },
+    gradientOverlay: {
+      position: "absolute",
+      height: SPACING.HYPER,
+      left: 0,
+      right: 0,
+      bottom: 0,
     },
     contentContainer: {
       flex: 1,
       alignItems: "center",
-      justifyContent: "flex-end",
+      justifyContent: "space-around",
       paddingHorizontal: horizontalPadding,
-      paddingTop: SPACING.XL,
-      paddingBottom: Scale.getVerticalScale(SPACING.XXL),
+      paddingVertical: Scale.getVerticalScale(SPACING.XXL),
     },
     brandLogo: {
       width: "100%",
@@ -50,7 +63,7 @@ export const createStyles = (colors: ColorPalette): LandingStyles => {
       fontFamily: Fonts.getFontFamily("900"),
       fontWeight: "900",
       textAlign: "center",
-      marginBottom: Scale.getVerticalScale(SPACING.JUMBO),
+      marginBottom: Scale.getVerticalScale(SPACING.MD),
       lineHeight: FONT_SIZE.XXXL * LINE_HEIGHT.NORMAL,
       color: colors.text,
     },
@@ -74,10 +87,10 @@ export const createStyles = (colors: ColorPalette): LandingStyles => {
     buttonContainer: {
       width: "100%",
       gap: verticalGap,
-      paddingVertical: Scale.getVerticalScale(SPACING.LG),
+      paddingVertical: Scale.getVerticalScale(SPACING.SM),
     },
     privacyContainer: {
-      marginTop: SPACING.XXL,
+      marginTop: SPACING.SM,
       paddingHorizontal: SPACING.XL,
     },
     privacyText: {

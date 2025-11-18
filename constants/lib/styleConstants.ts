@@ -15,6 +15,11 @@ export const SPACING = {
   XXXL: 32,
   MEGA: 40,
   JUMBO: 50,
+  ULTRA: 60,
+  SUPER: 70,
+  HYPER: 80,
+  EPIC: 90,
+  LEGENDARY: 100,
 } as const;
 
 export const GAP = {
@@ -50,7 +55,8 @@ export const FONT_SIZE = {
   XL: 20,
   XXL: 24,
   XXXL: 32,
-  JUMBO: 40,
+  MEGA: 40,
+  JUMBO: 50,
 } as const;
 
 export default {

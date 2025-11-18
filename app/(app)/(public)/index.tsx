@@ -4,9 +4,10 @@ import Animated, { FadeInDown } from "react-native-reanimated";
 
 import Button from "@components/atoms/Button";
 import OAuth from "@components/molecules/auth/OAuth";
-import ThemeToggle from "@components/ThemeToggle";
+import SmoothInfiniteScroll from "@components/molecules/auth/SmoothInfiniteScroll";
 import { TEXT } from "@constants";
 import { useTheme } from "@hooks";
+import { LinearGradient } from "expo-linear-gradient";
 import { createStyles } from "./style";
 
 const LOGO_IMAGE = require("@assets/images/wolt-logo.png");
@@ -23,7 +24,21 @@ export default function LandingScreen() {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.scrollContainer} />
+      <View style={styles.infiniteScrollContainer}>
+        <View>
+          <SmoothInfiniteScroll scrollDirection="down" iconSet="set1" />
+        </View>
+        <View>
+          <SmoothInfiniteScroll scrollDirection="up" iconSet="set2" />
+        </View>
+        <View>
+          <SmoothInfiniteScroll scrollDirection="down" iconSet="set3" />
+        </View>
+        <LinearGradient
+          colors={["transparent", colors.background]}
+          style={styles.gradientOverlay}
+        />
+      </View>
 
       <View style={styles.contentContainer}>
         <Animated.Image
@@ -59,7 +74,6 @@ export default function LandingScreen() {
             {TEXT.PR_SEC_TEXT}
           </Text>
         </Animated.View>
-        <ThemeToggle />
       </View>
     </View>
   );
