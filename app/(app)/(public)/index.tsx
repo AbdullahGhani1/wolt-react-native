@@ -1,10 +1,52 @@
+import { Fonts } from "@/constants/theme";
 import React from "react";
-import { Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
+import Animated, { FadeInDown } from "react-native-reanimated";
 
 export default function Index() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Hello world.</Text>
+    <View style={styles.container}>
+      <View style={styles.infiniteScrollContainer}></View>
+      <View style={styles.contentContainer}>
+        <Image
+          source={require("@assets/images/wolt-logo.png")}
+          style={styles.brandLong}
+        />
+        <Animated.Text entering={FadeInDown} style={styles.tagline}>
+          Almost everything delivered
+        </Animated.Text>
+
+        {/* Login Buttons */}
+
+        <View style={styles.buttonContainer}>
+          <Animated.View entering={FadeInDown.delay(200)}>
+            {/* Apple Auth */}
+          </Animated.View>
+        </View>
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+  infiniteScrollContainer: { flex: 0.8 },
+  contentContainer: { flex: 1, alignItems: "center" },
+  brandLong: {
+    width: "100%",
+    height: 48,
+    resizeMode: "contain",
+    marginBottom: 20,
+  },
+  tagline: {
+    fontSize: 32,
+    fontFamily: Fonts.brandBlack,
+    textAlign: "center",
+    marginBottom: 50,
+    lineHeight: 36,
+  },
+  buttonContainer: {
+    gap: 12,
+    width: "100%",
+  },
+});
