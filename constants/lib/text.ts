@@ -1,24 +1,18 @@
 export default {
+  // Authentication
   BTN_SIGNIN_SIMPLE: "Sign In",
   BTN_GOOGLE: "Continue with Google",
   BTN_APPLE: "Continue with Apple",
 
-  SignIn: "Sign In",
-  FORGOT_PASSWORD: "Forgot Password?",
-  PLEASE_WAIT: "Please wait...",
-  RELOAD: "Reload",
+  // Theme
   LIGHT_MODE: "Light Mode",
   DARK_MODE: "Dark Mode",
-  EDIT_PROFILE: "Edit Profile",
+
+  // Loading
   LOADING: "Loading...",
-  SHARE: "Share",
-  RALLY_MASTER: "Rally Master",
-  CHAT: "Chat",
-  START_DATE: "Start Date",
-  START_TIME: "Start Time",
-  END_DATE: "End Date",
-  END_TIME: "End Time",
-  DURATION: "Duration",
-  DISTANCE: "Distance",
-  MANAGE: "Manage",
+
+  // Onboarding/Landing
+  TAGLINE_DELIVERY: "Almost everything delivered",
+  TAGLINE_FAST: "Fast and reliable delivery",
+  TAGLINE_EASY: "Easy ordering, instant delivery",
 };

@@ -8,6 +8,8 @@ export default StyleSheet.create({
   },
   secondaryButton: {
     width: Scale.getHorizontalScale(50),
+    justifyContent: "center",
+    alignItems: "center",
   },
   primaryButton: {
     width: Width - Scale.getHorizontalScale(40),
