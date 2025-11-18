@@ -14,17 +14,19 @@ interface LandingStyles {
   subtitle: TextStyle;
   description: TextStyle;
   buttonContainer: ViewStyle;
+  privacyContainer: ViewStyle;
+  privacyText: TextStyle;
+  privacyLink: TextStyle;
 }
 
 export const createStyles = (colors: ColorPalette): LandingStyles => {
-  const horizontalPadding = Scale.getHorizontalScale(SPACING.LG);
   const verticalGap = Scale.getVerticalScale(SPACING.XL);
+  const horizontalPadding = Scale.getHorizontalScale(SPACING.LG);
 
   return StyleSheet.create<LandingStyles>({
     container: {
       flex: 1,
       backgroundColor: colors.background,
-      paddingHorizontal: horizontalPadding,
     },
     scrollContainer: {
       flex: 0.8,
@@ -32,7 +34,10 @@ export const createStyles = (colors: ColorPalette): LandingStyles => {
     contentContainer: {
       flex: 1,
       alignItems: "center",
-      justifyContent: "center",
+      justifyContent: "flex-end",
+      paddingHorizontal: horizontalPadding,
+      paddingTop: SPACING.XL,
+      paddingBottom: Scale.getVerticalScale(SPACING.XXL),
     },
     brandLogo: {
       width: "100%",
@@ -70,6 +75,20 @@ export const createStyles = (colors: ColorPalette): LandingStyles => {
       width: "100%",
       gap: verticalGap,
       paddingVertical: Scale.getVerticalScale(SPACING.LG),
+    },
+    privacyContainer: {
+      marginTop: SPACING.XXL,
+      paddingHorizontal: SPACING.XL,
+    },
+    privacyText: {
+      fontSize: Fonts.scaleFontSize(FONT_SIZE.XS),
+      color: colors.text,
+      textAlign: "center",
+      lineHeight: FONT_SIZE.XS * LINE_HEIGHT.LOOSE,
+    },
+    privacyLink: {
+      color: colors.primary,
+      textDecorationLine: "underline",
     },
   });
 };

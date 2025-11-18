@@ -3,7 +3,7 @@
 const WHITE = "#FFFFFF";
 const BLACK = "#000000";
 
-const PRIMARY = "#01BEE5";
+const PRIMARY = "#4285F4";
 const PRIMARY_DARK = "#0094DD";
 const PRIMARY_LIGHT = "#E9F9FF";
 

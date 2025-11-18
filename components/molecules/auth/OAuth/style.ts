@@ -1,5 +1,5 @@
 import { DESIGN_SYSTEM } from "@constants";
-import { Scale, Width } from "@utils";
+import { Scale } from "@utils";
 import { StyleSheet, ViewStyle } from "react-native";
 
 const { SPACING } = DESIGN_SYSTEM;
@@ -14,8 +14,9 @@ interface OAuthStyles {
 export const createStyles = (): OAuthStyles =>
   StyleSheet.create<OAuthStyles>({
     btnContainerStyle: {
-      justifyContent: "center",
       gap: SPACING.MD,
+      justifyContent: "center",
+      alignItems: "stretch",
     },
     secondaryButton: {
       width: Scale.getHorizontalScale(50),
@@ -23,7 +24,7 @@ export const createStyles = (): OAuthStyles =>
       alignItems: "center",
     },
     primaryButton: {
-      width: Width - Scale.getHorizontalScale(SPACING.XXL),
+      width: "100%",
     },
     iconButton: {
       marginLeft: SPACING.LG,

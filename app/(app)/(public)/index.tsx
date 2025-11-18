@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from "react";
-import { View } from "react-native";
+import { Linking, Text, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
 import Button from "@components/atoms/Button";
@@ -18,7 +18,9 @@ export default function LandingScreen() {
   const handleEmailSignIn = useCallback(() => {
     // Email sign-in logic here
   }, []);
-
+  const openWebBrowser = () => {
+    Linking.openURL("https://munazaphysio.studio/");
+  };
   return (
     <View style={styles.container}>
       <View style={styles.scrollContainer} />
@@ -33,20 +35,32 @@ export default function LandingScreen() {
           {TEXT.TAGLINE_DELIVERY}
         </Animated.Text>
 
-        <OAuth size="default" direction="column" />
-        <Animated.View
-          entering={FadeInDown.delay(200)}
-          style={styles.buttonContainer}
-        >
-          <Button
-            mode="tertiary"
-            btnText={TEXT.BTN_SIGNIN_SIMPLE}
-            onPress={handleEmailSignIn}
-          />
-        </Animated.View>
-      </View>
+        {/* Buttons container  */}
+        <View style={styles.buttonContainer}>
+          <OAuth size="default" direction="column" />
 
-      <ThemeToggle />
+          <Animated.View entering={FadeInDown.delay(200)}>
+            <Button
+              mode="tertiary"
+              btnText={TEXT.BTN_SIGNIN_SIMPLE}
+              onPress={handleEmailSignIn}
+            />
+          </Animated.View>
+        </View>
+        <Animated.View
+          style={styles.privacyContainer}
+          entering={FadeInDown.delay(400)}
+        >
+          <Text style={styles.privacyText}>
+            {TEXT.PR_TEXT}
+            <Text style={styles.privacyLink} onPress={openWebBrowser}>
+              {TEXT.PR_LINK_TEXT}
+            </Text>
+            {TEXT.PR_SEC_TEXT}
+          </Text>
+        </Animated.View>
+        <ThemeToggle />
+      </View>
     </View>
   );
 }

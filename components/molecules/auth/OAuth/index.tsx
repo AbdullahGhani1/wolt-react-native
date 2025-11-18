@@ -47,7 +47,6 @@ const OAuth: FC<Props> = ({
     <View style={[styles.btnContainerStyle, { flexDirection: direction }]}>
       {Platform.OS === "ios" ? (
         <>
-          {/* Apple Sign-In Button */}
           <Animated.View entering={FadeInDown.delay(appleAnimationDelay)}>
             <Button
               leftIcon
@@ -66,7 +65,6 @@ const OAuth: FC<Props> = ({
             />
           </Animated.View>
 
-          {/* Google Sign-In Button */}
           <Animated.View entering={FadeInDown.delay(googleAnimationDelay)}>
             <Button
               leftIcon

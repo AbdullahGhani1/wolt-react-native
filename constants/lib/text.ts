@@ -4,6 +4,10 @@ export default {
   BTN_GOOGLE: "Continue with Google",
   BTN_APPLE: "Continue with Apple",
 
+  PR_TEXT: "Please visit ",
+  PR_LINK_TEXT: "Wolt Privacy Statement",
+  PR_SEC_TEXT: " to learn about personal data processing at Wolt.",
+
   // Theme
   LIGHT_MODE: "Light Mode",
   DARK_MODE: "Dark Mode",
