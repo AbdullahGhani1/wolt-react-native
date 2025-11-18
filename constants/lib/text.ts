@@ -1,5 +1,8 @@
 export default {
   BTN_SIGNIN_SIMPLE: "Sign In",
+  BTN_GOOGLE: "Continue with Google",
+  BTN_APPLE: "Continue with Apple",
+
   SignIn: "Sign In",
   FORGOT_PASSWORD: "Forgot Password?",
   PLEASE_WAIT: "Please wait...",

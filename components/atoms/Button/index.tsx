@@ -1,4 +1,5 @@
-import React, { FC } from "react";
+import { useTheme } from "@hooks";
+import React, { FC, useMemo } from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -6,54 +7,58 @@ import {
   TextStyle,
   ViewStyle,
 } from "react-native";
-
-import { useTheme } from "@hooks";
 import styles from "./style";
 
-interface Props {
+type ButtonMode = "primary" | "secondary" | "tertiary" | "text";
+
+interface ButtonProps {
   btnText?: string;
   loading?: boolean;
   style?: ViewStyle;
   textColor?: string;
-  leftIcon?: boolean;
   disabled?: boolean;
-  rightIcon?: boolean;
   buttonColor?: string;
   textStyle?: TextStyle;
   icon?: React.ReactNode;
   outlinedColor?: string;
   outlinedWidth?: number;
-  mode?: "solid" | "outlined" | "text";
+  mode?: ButtonMode;
   onPress?: () => void;
+  leftIcon?: boolean;
+  rightIcon?: boolean;
 }
 
-const Button: FC<Props> = ({
-  style = {},
-  icon = null,
-  btnText = "",
-  textColor = "",
-  textStyle = {},
-  mode = "solid",
+const Button: FC<ButtonProps> = ({
+  style,
+  icon,
+  btnText,
+  textColor,
+  textStyle,
+  mode = "primary",
   loading = false,
   disabled = false,
-  buttonColor = "",
+  buttonColor,
   leftIcon = false,
   rightIcon = false,
-  outlinedWidth = 0,
-  outlinedColor = "",
-  onPress = () => {},
+  outlinedWidth = 1,
+  outlinedColor,
+  onPress,
 }) => {
   const { colors } = useTheme();
-  const dynamicOpacity =
-    disabled || loading ? { opacity: 0.5 } : { opacity: 1 };
+  const isDisabled = disabled || loading;
 
-  const getButtonStyle = (): ViewStyle => {
+  const buttonStyle = useMemo<ViewStyle>(() => {
     switch (mode) {
-      case "outlined":
+      case "secondary":
         return {
-          backgroundColor: buttonColor || colors.BACKGROUND,
-          borderColor: outlinedColor || colors.BUTTON_OUTLINE,
+          backgroundColor: buttonColor || colors.buttonSecondary,
+          borderColor: outlinedColor || colors.buttonSecondaryBorder,
           borderWidth: outlinedWidth,
+        };
+      case "tertiary":
+        return {
+          backgroundColor: buttonColor || colors.buttonTertiary,
+          borderWidth: 0,
         };
       case "text":
         return {
@@ -62,28 +67,57 @@ const Button: FC<Props> = ({
         };
       default:
         return {
-          backgroundColor: buttonColor || colors.BUTTON_COLOR,
-          borderColor: colors.BUTTON_OUTLINE,
+          backgroundColor: buttonColor || colors.buttonPrimary,
+          borderWidth: 0,
         };
     }
+  }, [mode, buttonColor, colors, outlinedColor, outlinedWidth]);
+
+  const dynamicStyle = useMemo<ViewStyle>(
+    () => ({
+      opacity: isDisabled ? 0.6 : 1,
+    }),
+    [isDisabled]
+  );
+
+  const getTextColor = (): string => {
+    if (textColor) return textColor;
+
+    switch (mode) {
+      case "secondary":
+        return colors.buttonSecondaryText;
+      case "tertiary":
+        return colors.buttonTertiaryText;
+      case "text":
+        return colors.primary;
+      default:
+        return colors.buttonPrimaryText;
+    }
   };
+
+  const finalTextColor = isDisabled
+    ? colors.buttonDisabledText
+    : getTextColor();
 
   return (
     <Pressable
       onPress={onPress}
-      disabled={disabled || loading}
-      style={[styles.button, getButtonStyle(), style, dynamicOpacity]}
+      disabled={isDisabled}
+      style={[styles.button, buttonStyle, style, dynamicStyle]}
+      accessibilityRole="button"
+      accessibilityState={{ disabled: isDisabled, busy: loading }}
     >
-      {loading && <ActivityIndicator color={textColor || colors.TEXT} />}
-      {leftIcon && icon}
+      {loading && <ActivityIndicator size="small" color={finalTextColor} />}
+      {leftIcon && !loading && icon}
       {btnText && (
         <Text
-          style={[styles.text, textStyle, { color: textColor || colors.TEXT }]}
+          style={[styles.text, textStyle, { color: finalTextColor }]}
+          numberOfLines={1}
         >
           {btnText}
         </Text>
       )}
-      {rightIcon && icon}
+      {rightIcon && !loading && icon}
     </Pressable>
   );
 };

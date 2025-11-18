@@ -13,14 +13,13 @@ export default StyleSheet.create({
   },
   tagline: {
     fontSize: 32,
-    fontFamily: Fonts.getFontFamily("600"),
+    fontFamily: Fonts.getFontFamily("900"),
     textAlign: "center",
     marginBottom: 50,
     lineHeight: 36,
   },
   buttonContainer: {
     gap: 12,
-    width: "100%",
   },
   otherButton: {
     backgroundColor: "black",
